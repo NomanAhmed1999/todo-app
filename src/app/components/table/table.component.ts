@@ -23,7 +23,7 @@ export class TableComponent implements OnInit{
 
 
   ngOnInit(): void {
-    let data: any = JSON.parse(localStorage.getItem('todo-list') || '{}');
+    let data: any = JSON.parse(localStorage.getItem('todo-list') || '[]');
     if(data){
       this.todoList = data;
     }
