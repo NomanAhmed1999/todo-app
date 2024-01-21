@@ -1,0 +1,54 @@
+<div class="p-2">
+
+    <div class="modal-header">
+        <h4>Add Todo</h4>
+    </div>
+
+    <div class="modal-body">
+        <form [formGroup]="todoForm">
+            <div>
+                <label>ID</label>
+                <p class="form-control bg-body-secondary">{{todoData && todoData.id ? todoData.id : autoGeneratId}}</p>
+                <p class="text-danger"
+                    *ngIf="(todoFormControl['id'].touched || submitted) && todoFormControl['id'].errors?.['required']">
+                    ID is required
+                </p>
+            </div>
+
+            <div class="mt-2">
+                <label>Todo</label>
+                <input formControlName="todo" type="text" class="form-control mt-1" />
+                <p class="text-danger"
+                    *ngIf="(todoFormControl['todo'].touched || submitted) && todoFormControl['todo'].errors?.['required']">
+                    Todo is required
+                </p>
+            </div>
+
+            <div class="mt-2">
+                <label>Status</label>
+                <input formControlName="status" type="text" class="form-control mt-1" />
+                <p class="text-danger"
+                    *ngIf="(todoFormControl['status'].touched || submitted) && todoFormControl['status'].errors?.['required']">
+                    Status is required
+                </p>
+            </div>
+
+            <div class="mt-2">
+                <label>Date</label>
+                <input formControlName="date" type="text" class="form-control mt-1" />
+                <p class="text-danger"
+                    *ngIf="(todoFormControl['date'].touched || submitted) && todoFormControl['date'].errors?.['required']">
+                    Date is required
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4 modal-footer">
+        <button class="btn btn-sm btn-danger" (click)="activeModal.close('Close click')">Cancel</button>
+        <button class="btn btn-sm btn-primary ms-2" (click)="addedTodo()">{{formType === 'edit' ? 'Update' :
+            'Add'}}</button>
+    </div>
+
+
+</div>

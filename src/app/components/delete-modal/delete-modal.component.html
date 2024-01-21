@@ -1,0 +1,17 @@
+<div class="p-2">
+
+    <div class="modal-header">
+        <h4>Delete Todo</h4>
+    </div>
+
+    <div class="modal-body">
+            <p>Are you sure! You want to delete this Todo.</p>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+        <button class="btn btn-sm btn-primary" (click)="activeModal.close('Close click')">Cancel</button>
+        <button class="btn btn-sm btn-danger ms-2" (click)="deleteTodo()">Delete</button>
+    </div>
+
+
+</div>

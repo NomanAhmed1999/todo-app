@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Todo App</h1>
+    <button class="btn btn-primary" (click)="open('add')">Add Todo</button>
+</div>
+
+
+
+<ngb-alert *ngIf="showAddedSuccessAlert || showdeletedSuccessAlert || showAddedUpdatedAlert" type="info">
+    Todo {{showAddedSuccessAlert ? 'Added' : (showAddedUpdatedAlert ? 'Updated' : 'Deleted')}} Successfully
+</ngb-alert>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Todo</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="todoList.length > 0">
+        @for (todo of todoList; track todo.todo; let i = $index) {
+        <tr>
+            <th scope="row">{{ todo.id }}</th>
+            <td>{{ todo.todo }}</td>
+            <td>{{ todo.status }}</td>
+            <td>{{ todo.date }}</td>
+            <td>
+                <button (click)="open('edit', todo)" type="button" class="btn btn-sm btn-primary">Edit <i
+                        class="fa fa-pencil ms-1"></i></button>
+                <button (click)="deletTodo(todo.id)" type="button" class="btn btn-sm btn-danger ms-2">Delete <i
+                        class="fa fa-trash ms-1"></i></button>
+            </td>
+        </tr>
+        }
+    </tbody>
+    <p *ngIf="todoList.length === 0">No data to show</p>
+</table>
+
+<!-- <app-add-edit-todo (addedTodo)="addedTodo($event)"></app-add-edit-todo> -->
